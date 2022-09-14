@@ -23,9 +23,7 @@ public class StepsTest {
             open("https://github.com");
         });
         step("Ищем репозиторий " + REPOSITORY, () -> {
-            $(".header-search-input").click();
-            $(".header-search-input").sendKeys(REPOSITORY);
-            $(".header-search-input").submit();
+            $("[placeholder='Search GitHub']").setValue(REPOSITORY).pressEnter();
         });
         step("Кликаем по ссылке репозитория " + REPOSITORY, () -> {
             $(linkText(REPOSITORY)).click();

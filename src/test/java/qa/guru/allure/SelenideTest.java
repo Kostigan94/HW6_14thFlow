@@ -16,12 +16,9 @@ public class SelenideTest {
     public void testIssueSearch(){
         SelenideLogger.addListener("Allure", new AllureSelenide());
         open("https://github.com");
-        $(".header-search-input").click();
-        $(".header-search-input").sendKeys("selenide/selenide");
-        $(".header-search-input").submit();
-
+        $("[placeholder='Search GitHub']").setValue("selenide/selenide").pressEnter();
         $(linkText("selenide/selenide")).click();
-        $("issue-tab").click();
+        $("#issues-tab").click();
         $(withText("#1915")).should(Condition.exist);
     }
 }
